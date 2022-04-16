@@ -1,4 +1,3 @@
-from django.db import connection
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
