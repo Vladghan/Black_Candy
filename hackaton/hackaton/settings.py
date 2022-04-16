@@ -43,10 +43,23 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework_simplejwt',
+    'channels',
 
     'account',
     'session',
 ]
+
+# Конфигурация Channels
+ASGI_APPLICATION = "hackaton.asgi.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+            # "symmetric_encryption_keys": '6c99f99deac1332c6d0ae5829e56740ef73c4433440469bbdfb015ee901d7f08',
+        },
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
