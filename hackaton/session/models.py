@@ -13,6 +13,7 @@ class Session(models.Model):
     status = models.CharField(max_length=70)
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     session_number = models.IntegerField()
+    start_price = models.FloatField()
 
 
 class UserSession(models.Model):
