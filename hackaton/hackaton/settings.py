@@ -33,6 +33,7 @@ AUTH_USER_MODEL = 'account.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,14 +44,15 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework_simplejwt',
-    'channels',
+
 
     'account',
     'session',
 ]
 
-# Конфигурация Channels
-ASGI_APPLICATION = "hackaton.asgi.application"
+WSGI_APPLICATION = 'hackaton.wsgi.application'
+ASGI_APPLICATION = 'hackaton.asgi.application'
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -89,8 +91,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'hackaton.wsgi.application'
 
 
 # Database
