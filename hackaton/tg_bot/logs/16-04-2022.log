@@ -1,0 +1,5 @@
+16-04-2022 16:19:28: bot_commands.py: INFO - Commands are set
+16-04-2022 16:19:28: app.py: INFO - Bot is started
+16-04-2022 16:19:47: handlers.py: DEBUG - 259733823 joined bot.
+16-04-2022 16:20:04: handlers.py: DEBUG - 259733823 entered /sessions command
+16-04-2022 16:20:21: app.py: INFO - Bot is stopped

@@ -1,18 +1,25 @@
 from rest_framework import serializers
 
-from session.models import Session, SessionData
+from session.models import Session, SessionData, UserSession
 
 
-class SessionDataListSerializer(serializers.ModelSerializer):
+class SessionDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SessionData
         fields = '__all__'
 
 
-class SessionListSerializer(serializers.ModelSerializer):
-    sessions_data = SessionDataListSerializer(many=True)
+class SessionSerializer(serializers.ModelSerializer):
+    sessions_data = SessionDataSerializer(many=True)
 
     class Meta:
         model = Session
         fields = '__all__'
 
+
+class SessionUserListSerializer(serializers.ModelSerializer):
+    session = SessionSerializer()
+
+    class Meta:
+        model = UserSession
+        fields = '__all__'

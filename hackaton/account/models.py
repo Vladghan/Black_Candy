@@ -5,6 +5,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 
 class CustomUser(AbstractUser, AbstractBaseUser):
     username = models.CharField(blank=True, null=True, max_length=100, default="user")
+    telegram_id = models.BigIntegerField(blank=True, null=True)
 
     email = models.EmailField(unique=True)
 
