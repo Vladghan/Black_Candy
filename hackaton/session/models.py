@@ -14,6 +14,9 @@ class Session(models.Model):
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     session_number = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class UserSession(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.Model)
@@ -24,4 +27,4 @@ class SessionData(models.Model):
     provider = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     betting_time = models.DateTimeField(auto_now_add=True)
     current_amount = models.FloatField()
-    session_id = models.ForeignKey(Session, on_delete=models.PROTECT)
+    session_id = models.ForeignKey(Session, on_delete=models.PROTECT, related_name='sessions_data')
