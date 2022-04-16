@@ -42,3 +42,6 @@ class SessionData(models.Model):
     betting_time = models.DateTimeField(auto_now_add=True)
     current_amount = models.FloatField()
     session_id = models.ForeignKey(Session, on_delete=models.PROTECT, related_name='sessions_data')
+
+    class Meta:
+        ordering = ['current_amount']
