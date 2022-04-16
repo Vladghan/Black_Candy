@@ -11,15 +11,14 @@ import os
 
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
-# from channels.auth import AuthMiddlewareStack
-from .middleware import JwtAuthMiddlewareStack
+from channels.auth import AuthMiddlewareStack
 import session.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hackaton.settings')
 
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
-    'websocket': JwtAuthMiddlewareStack(
+    'websocket': AuthMiddlewareStack(
         URLRouter(
             session.routing.websocket_urlpatterns
         )
