@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 
+from account.forms import CustomUser
+
 
 class Session(models.Model):
     name = models.CharField(max_length=1000)
@@ -11,6 +13,11 @@ class Session(models.Model):
     status = models.CharField(max_length=70)
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     session_number = models.IntegerField()
+
+
+class UserSession(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.Model)
+    session = models.ForeignKey(Session, on_delete=models.Model, related_name='user_sessions')
 
 
 class SessionData(models.Model):
