@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from session.api.serializers import SessionUserListSerializer, SessionSerializer, SessionDataSerializer
+from session.api.serializers import SessionUserListSerializer, SessionSerializer, SessionDataSerializer, \
+    SessionUserDetailSerializer
 from session.models import UserSession, Session, SessionData
 
 
@@ -27,3 +28,14 @@ class SessionDataView(generics.ListCreateAPIView):
     authentication_classes = (JWTAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
     queryset = SessionData.objects.all()
+
+
+class SessionDataDetailView(generics.RetrieveUpdateAPIView):
+    serializer_class = SessionUserDetailSerializer
+    # authentication_classes = (JWTAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+    # queryset = SessionData.objects.all()
+
+    def get_queryset(self):
+        queryset = SessionData.objects.filter(pk=self.kwargs.get('pk'))
+        return queryset

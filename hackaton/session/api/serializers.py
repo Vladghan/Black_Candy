@@ -23,3 +23,9 @@ class SessionUserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserSession
         fields = '__all__'
+
+
+class SessionUserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSession
+        fields = '__all__'
